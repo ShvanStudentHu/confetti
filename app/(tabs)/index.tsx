@@ -5,17 +5,13 @@ import "react-native-gesture-handler";
 import "react-native-reanimated";
 import ConfettiAnimation from "../../components/ui/confetti-animation";
 import { Router, useRouter } from "expo-router";
-
-const router = useRouter();
+// import useHandlePress from "./utils/utils";
 
 const YourApp = () => {
-  const confettiRef = useRef<any>(null);
-  const [showConfetti, setShowConvetti] = useState(false);
+  // const handlepress = useHandlePress();
+  const router = useRouter();
 
-  const handlePress = () => {
-    setShowConvetti(true);
-    confettiRef.current?.start();
-    setTimeout(() => setShowConvetti(false), 3000);
+  const handlePressLive = () => {
     router.navigate("/(tabs)/listening-live-page");
   };
 
@@ -27,8 +23,7 @@ const YourApp = () => {
         alignItems: "center",
       }}
     >
-      <ConfettiButton title="Click Me" onPress={handlePress} />
-      {showConfetti && <ConfettiAnimation ref={confettiRef} />}
+      <ConfettiButton title="Click Me" onPress={handlePressLive} />
     </View>
   );
 };
